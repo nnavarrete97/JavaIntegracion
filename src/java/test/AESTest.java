@@ -22,6 +22,8 @@ import javax.crypto.spec.SecretKeySpec;
  * @author nicomscr
  */
 public class AESTest {
+    
+    //Pavel estuvo aquí
 
     public static void main(String[] args) throws NoSuchAlgorithmException, NoSuchPaddingException {
 //        DaoUsuario dao = new DaoUsuario();
