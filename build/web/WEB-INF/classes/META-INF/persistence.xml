@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="HotelVeranumJava2EPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>Entidades.DatosPersonalesEmpleados</class>
+    <class>Entidades.DatosHotel</class>
+    <class>Entidades.Comunas</class>
+    <class>Entidades.Habitaciones</class>
+    <class>Entidades.AuxServiciosClientes</class>
+    <class>Entidades.Sueldos</class>
+    <class>Entidades.Empleados</class>
+    <class>Entidades.Servicios</class>
+    <class>Entidades.TipoUsuario</class>
+    <class>Entidades.Reservas</class>
+    <class>Entidades.Usuarios</class>
+    <class>Entidades.Hoteles</class>
+    <class>Entidades.Clientes</class>
+    <class>Entidades.Regiones</class>
+    <class>Entidades.Cargos</class>
+    <class>Entidades.TipoHabitaciones</class>
+    <exclude-unlisted-classes>false</exclude-unlisted-classes>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@159.89.86.128:4921:xe"/>
+      <property name="javax.persistence.jdbc.user" value="gneil"/>
+      <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.OracleDriver"/>
+      <property name="javax.persistence.jdbc.password" value="ling3"/>
+    </properties>
+  </persistence-unit>
+</persistence>
