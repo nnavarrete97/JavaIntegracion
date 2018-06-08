@@ -23,7 +23,8 @@ public class DaoUsuario implements IUsuario {
     public void agregar(Usuarios usuario, Connection con) throws Exception {
         // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 
-        String sql = "INSERT INTO USUARIOS VALUES (SEQ_USUARIOS.NEXTVAL, ?,?,?)";
+        //String llamadaProcedimiento = "{ call sp_agregar_trabajador(?, ?, ?) }";
+        String sql = "{ call sp_agregar_usuarios(?, ?, ?) }";
 
         PreparedStatement pstmt = con.prepareStatement(sql);
         pstmt.setString(1, usuario.getUsername());
@@ -46,8 +47,9 @@ public class DaoUsuario implements IUsuario {
 
         List<Usuarios> lista = new ArrayList<>();
 
+        //String llamadaProcedimiento = "{ call sp_agregar_trabajador(?, ?, ?) }";
         //SQL
-        String sql = "SELECT ID, PASSWORD,USERNAME FROM USUARIOS";
+        String sql = "{ call sp_listar_usuarios() }";
 
         PreparedStatement pstmt = con.prepareStatement(sql);
         ResultSet rs = pstmt.executeQuery();
@@ -61,6 +63,21 @@ public class DaoUsuario implements IUsuario {
 
         return lista;
 
+    }
+
+    @Override
+    public void loginUsuario(String username, String pass,  Connection con) throws Exception {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+         String sql = "SELECT * from USUARIOS WHERE USERNAME = ? and PASSWORD = ?";
+
+        PreparedStatement pstmt = con.prepareStatement(sql);
+        pstmt.setString(1, username);
+        pstmt.setString(2, pass);
+        pstmt.execute();
+        pstmt.close();
+        
+    
     }
 
 }

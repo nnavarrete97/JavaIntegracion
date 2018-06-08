@@ -5,6 +5,7 @@
  */
 package Servlet;
 
+import AES.AES;
 import Entidades.Usuarios;
 import com.JavaConnectDb;
 import java.io.IOException;
@@ -115,11 +116,15 @@ public class ServletUsuario extends HttpServlet {
             throws ServletException, IOException {
         
         String username = request.getParameter("txtUsername");
-        String password = request.getParameter("txtPassword");
+        String originalPass = request.getParameter("txtPassword");
+        final String secretKey = "AES";
+        String encryptedPass = AES.encrypt(originalPass, secretKey);
+        
+                
         //Parse
         int idTipoParse = 2;
 
-        Usuarios user = new Usuarios(username, password, idTipoParse);
+        Usuarios user = new Usuarios(username, encryptedPass, idTipoParse);
 
         //Objeto conexión
         Connection con = null;
@@ -129,13 +134,13 @@ public class ServletUsuario extends HttpServlet {
             //Llamar a BO para validar las reglas de negocio
             UsuarioBO.registro(user, con);
             
-            request.setAttribute("tipoMensaje", "alert alet-success");
+            request.setAttribute("tipoMensaje", "alert alert-success");
             request.setAttribute("msj", "Usuario registrado con éxito en la BD 1!");
             
             
 
         } catch (Exception e) {
-             request.setAttribute("tipoMensaje", "alert alet-danger");
+             request.setAttribute("tipoMensaje", "alert alert-danger");
             request.setAttribute("msj", "Error al registrar al usuario en la BD 2!");
             e.printStackTrace();
            

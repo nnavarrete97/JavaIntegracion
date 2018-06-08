@@ -22,4 +22,6 @@ public interface IUsuario {
     
     public List<Usuarios> listarUsuarios(Connection con) throws Exception;
     
+    public void loginUsuario(String username, String pass,  Connection con) throws Exception;
+    
 }
